@@ -34,7 +34,6 @@ public class ScheduleTaskConfig {
     @Scheduled(cron = "0 */30 * * * ?")
     private void clearUser() {
         //log.info("定时任务 >>>>>>>>>> 清除注册时间超过30分钟的账户，以及其会话信息");
-
         List<User> userList = chatSessionService.onlineList();
         userList.forEach(user -> {
             if ((new Date().getTime() - user.getId()) >= MINUTE_30) {
